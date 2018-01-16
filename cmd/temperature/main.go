@@ -8,6 +8,8 @@ import (
 	"strings"
 
 	"io/ioutil"
+
+	"github.com/metalmatze/i3blocks-go/fontawesome"
 )
 
 func main() {
@@ -62,19 +64,19 @@ func main() {
 	// Depending on current temperature value,
 	// set appropriate thermometer icon.
 	if temp <= lowTemp {
-		icon = ""
+		icon = fontawesome.ThermometerEmpty
 	} else if (temp > lowTemp) && (temp <= mediumTemp) {
-		icon = ""
+		icon = fontawesome.ThermometerQuarter
 	} else if (temp > mediumTemp) && (temp <= highTemp) {
-		icon = ""
+		icon = fontawesome.ThermometerHalf
 	} else if (temp > highTemp) && (temp <= criticalTemp) {
-		icon = "<span foreground=\"#ffae00\"></span>"
+		icon = "<span foreground=\"#ffae00\">" + fontawesome.ThermometerThreeQuarters + "</span>"
 	} else {
-		icon = "<span foreground=\"#ff0000\"></span>"
+		icon = "<span foreground=\"#ff0000\">" + fontawesome.ThermometerFull + "</span>"
 	}
 
 	// Build final output string.
-	output = fmt.Sprintf("%s%4d°C", icon, temp)
+	output = fmt.Sprintf("%s%d°C", icon, temp)
 
 	fullText = output
 	shortText = output

@@ -28,7 +28,7 @@ func main() {
 
 	uptime := time.Duration(up) * time.Second
 
-	out := fmt.Sprintf("%s%d:%d",
+	out := fmt.Sprintf("%s %d:%d",
 		fontawesome.ArrowCircleUp,
 		int(uptime.Hours())%24,
 		int(uptime.Minutes())%60,
